@@ -23,11 +23,11 @@ jobs:
       run: | 
         docker version
         # 登录阿里云镜像仓库
-        docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }} registry.cn-shenzhen.aliyuncs.com
+        docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }} registry.cn-shanghai.aliyuncs.com
         # 使用Dockerfile构建镜像
-        docker build . --file Dockerfile --tag registry.cn-shenzhen.aliyuncs.com/devan/hanlp-jupyterlab
+        docker build . --file Dockerfile --tag registry.cn-shanghai.aliyuncs.com/asher-ai/hanlp-jupyterlab
         # 推送镜像到镜像仓库
-        docker push registry.cn-shenzhen.aliyuncs.com/devan/hanlp-jupyterlab
+        docker push registry.cn-shanghai.aliyuncs.com/asher-ai/hanlp-jupyterlab
 ```
 > github actions的workflow语法可以查看[官方文档](https://docs.github.com/cn/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions)
 
@@ -36,14 +36,14 @@ jobs:
 ![设置secrets](./images/set-secrets-1.png)
 ![设置secrets](./images/set-secrets-2.png)
 
-在secrets中设置好登录docker的用户名和密码后，还需要将上面的仓库地址和镜像名称`registry.cn-shenzhen.aliyuncs.com/devan/hanlp-jupyterlab`修改为自己的仓库地址和镜像名称
+在secrets中设置好登录docker的用户名和密码后，还需要将上面的仓库地址和镜像名称registry.cn-shanghai.aliyuncs.com/asher-ai/hanlp-jupyterlab`修改为自己的仓库地址和镜像名称
 
 点击`Actions`即可查看运行状态
 
 # 使用方法
 使用如下命令启动容器：
 ```
- docker run --name hanlp -d  -p 9990:8888 registry.cn-shenzhen.aliyuncs.com/devan/hanlp-jupyterlab
+ docker run --name hanlp -d  -p 9990:8888 registry.cn-shanghai.aliyuncs.com/asher-ai/hanlp-jupyterlab
 ```
 使用如下命令查看容器启动日志：
 ```
@@ -56,16 +56,16 @@ docker logs -f hanlp
 [I 08:32:54.086 LabApp] JupyterLab application directory is /usr/local/share/jupyter/lab
 [I 08:32:54.089 LabApp] Serving notebooks from local directory: /jupyter
 [I 08:32:54.089 LabApp] Jupyter Notebook 6.1.5 is running at:
-[I 08:32:54.089 LabApp] http://e2a864c5022b:8888/?token=05585b841aafc641b9e81a10b668b599a151156b2d8070b8
-[I 08:32:54.089 LabApp]  or http://127.0.0.1:8888/?token=05585b841aafc641b9e81a10b668b599a151156b2d8070b8
+[I 08:32:54.089 LabApp] http://e2a864c5022b:9990/?token=05585b841aafc641b9e81a10b668b599a151156b2d8070b8
+[I 08:32:54.089 LabApp]  or http://127.0.0.1:9990?token=05585b841aafc641b9e81a10b668b599a151156b2d8070b8
 [I 08:32:54.089 LabApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
 [C 08:32:54.093 LabApp] 
     
     To access the notebook, open this file in a browser:
         file:///root/.local/share/jupyter/runtime/nbserver-1-open.html
     Or copy and paste one of these URLs:
-        http://e2a864c5022b:8888/?token=05585b841aafc641b9e81a10b668b599a151156b2d8070b8
-     or http://127.0.0.1:8888/?token=05585b841aafc641b9e81a10b668b599a151156b2d8070b8
+        http://e2a864c5022b:9990/?token=05585b841aafc641b9e81a10b668b599a151156b2d8070b8
+     or http://127.0.0.1:9990/?token=05585b841aafc641b9e81a10b668b599a151156b2d8070b8
 
 ```
 在浏览器中可以测试hanlp，如下图所示：

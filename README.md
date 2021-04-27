@@ -43,7 +43,7 @@ jobs:
 # 使用方法
 使用如下命令启动容器：
 ```
- docker run --name hanlp -d  -p 8888:8888 registry.cn-shenzhen.aliyuncs.com/devan/hanlp-jupyterlab
+ docker run --name hanlp -d  -p 9990:8888 registry.cn-shenzhen.aliyuncs.com/devan/hanlp-jupyterlab
 ```
 使用如下命令查看容器启动日志：
 ```
